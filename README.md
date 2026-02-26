@@ -1,13 +1,17 @@
 # Exercice 04 : Devine mon nombre
 ## Durée : 240'
 ## Objectifs visés :
-Maitriser les diagrammes de séquence ; Maitriser les diagrammes de classes ; Savoir se référer à la Javadoc ; Maîtrise de MVC avec Ihm simple fournie
+- Maitriser les diagrammes de séquence
+- Maitriser les diagrammes de classes
+- Savoir se référer à la Javadoc
+- Maîtrise de MVC avec Ihm simple fournie
 
 ## Travail à réaliser
 Lisez avec attention les informations fournies ci-après sous diverses formes (diagramme de classe, javadoc, diagrammes de séquence, …) car vous y trouverez toutes les informations utiles afin de finaliser le projet Java « DevineMonNombre ».
 
 ## Résultat à obtenir
 Si votre code est correctement implémenté selon les directives reçues, vous devriez obtenir une application fonctionnelle ressemblant à cela à son démarrage :
+
 ![Aperçu de l'application](images/interface.png)
 ## Description des fonctionnalités de l’application
 Les deux seuls boutons de l’application permettent de :
@@ -17,7 +21,7 @@ Les deux seuls boutons de l’application permettent de :
 | Pression du bouton | Résultats possibles| Aperçu |
 | :--------------- |:---------------| :----------------|
 | Ordinateur - Pense à un nouveau nombre  | L’ihm affichera ceci afin d’indiquer qu’un nouveau jeu a démarré :        |  ![Démarrage jeu](images/interface_1.png) |
-| Vérifier  | Si le jeu n’avait pas encore été démarré, l’ihm affichera ceci pour indiquer cela : | ![Jeu par démarré !](images/interface_2.png) |
+| Vérifier  | Si le jeu n’avait pas encore été démarré, l’ihm affichera ceci : | ![Jeu pas démarré !](images/interface_2.png) |
 | Vérifier | Si le jeu a été démarré et que la proposition de nombre saisie ne constitue pas un nombre valable, l’ihm affichera ceci pour l’indiquer : |    ![pas nombre valable !](images/interface_3.png) ![pas nombre valable !](images/interface_4.png)
 | Vérifier | Si le jeu a été démarré, l’ihm affichera ceci pour indiquer que la proposition du joueur est trop petite : |    ![pas nombre valable !](images/interface_5.png) 
 | Vérifier | Si le jeu a été démarré, l’ihm affichera ceci pour indiquer que la proposition du joueur est trop grande : |    ![pas nombre valable !](images/interface_6.png) 
@@ -74,7 +78,7 @@ class ServiceDevine {
     +setRefCtrl(Controller ctrl) void
     +getRefCtrl() Controller
 }
-note for ServiceDevine "MAX_NOMBRE = 100\nMIN_NOMBRE = 1\nNOMBRE_INVALIDE = -1"
+note for ServiceDevine "MAX_NOMBRE = 100<br/>MIN_NOMBRE = 1<br/>NOMBRE_INVALIDE = -1"
 Controller "1" o--> ServiceDevine : refServiceDevine
 ServiceDevine "1" o--> Controller : refController
 View "1" o--> Controller : refCtrl
@@ -85,24 +89,20 @@ Controller "1" o--> View : refView
 Voici la structure des packages pour chaque classe du projet
 ```mermaid
 classDiagram
-namespace ex04_devinemonnombre {
-    class app
-    class views
-    class ctrl
-    class services
-}
-namespace app {
-    class IhmSimple
-}
-namespace views {
-    class View
-}
-namespace ctrl {
-    class Controller 
-}
-namespace services {
-    class ServiceDevine 
-}
+
+    namespace app {
+        class IhmSimple
+    }
+    namespace views {
+        class View
+    }
+    namespace ctrl {
+        class Controller 
+    }
+    namespace services {
+        class ServiceDevine 
+    }
+
 
 ```
 
