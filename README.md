@@ -111,55 +111,55 @@ classDiagram
 Voici le diagramme de séquence de la méthode de la méthode `main()` de la classe `IhmSimple` du package `app` :
 ```mermaid
 sequenceDiagram
-    participant app.IhmSimple.main()
+    participant main
     create participant refCtrl
-    app.IhmSimple.main()->>refCtrl: new Controller()
+    main->>refCtrl: new Controller()
     create participant refServiceDevine
-    app.IhmSimple.main()->>refServiceDevine: new ServiceDevine()
-    app.IhmSimple.main()->>refCtrl: setRefServiceDevine(refServiceDevine)
+    main->>refServiceDevine: new ServiceDevine()
+    main->>refCtrl: setRefServiceDevine(refServiceDevine)
     create participant refView
-    app.IhmSimple.main()->>refView: new View()
-    app.IhmSimple.main()->>refCtrl: setRefView(refView)
-    app.IhmSimple.main()->>refView: setRefCtrl(refCtrl)
-    app.IhmSimple.main()->>refServiceDevine: setRefCtrl(refctrl)
-    app.IhmSimple.main()->>refCtrl: start()
+    main->>refView: new View()
+    main->>refCtrl: setRefView(refView)
+    main->>refView: setRefCtrl(refCtrl)
+    main->>refServiceDevine: setRefCtrl(refctrl)
+    main->>refCtrl: start()
 ```
 
 ### ihmsimple.ctrl.Controller.start()
 Voici le diagramme de séquence de la méthode de la méthode `start()` de la classe `Controller` du package `ctrl` :
 ```mermaid
 sequenceDiagram
-    participant Controller.start()
-    Controller.start()->>View refView: ihmStart()
-    Controller.start()->>View refView: afficherStatus("Jeu terminé !", Color.LIGHT_GRAY)
+    participant start
+    start->>View refView: ihmStart()
+    start->>View refView: afficherStatus("Jeu terminé !", Color.LIGHT_GRAY)
 ```
 ### ihmsimple.ctrl.Controller.actionDemarrerNouveauJeu()
 Voici le diagramme de séquence de la méthode de la méthode `actionDemarrerNouveauJeu()` de la classe `Controller` du package `ctrl` :
 ```mermaid
 sequenceDiagram
-    participant Controller.actionDemarrerNouveauJeu()
-    Controller.actionDemarrerNouveauJeu()->>ServiceDevine refServiceDevine: penserAUnNombre()
-    ServiceDevine refServiceDevine-->>Controller.actionDemarrerNouveauJeu(): nombre=
-    Controller.actionDemarrerNouveauJeu()->>View refView: afficherStatus("Devinez !", Color.YELLOW)
+    participant actionDemarrerNouveauJeu
+    actionDemarrerNouveauJeu->>ServiceDevine refServiceDevine: penserAUnNombre()
+    ServiceDevine refServiceDevine-->>actionDemarrerNouveauJeu: nombre=
+    actionDemarrerNouveauJeu->>View refView: afficherStatus("Devinez !", Color.YELLOW)
 ```
 ### ihmsimple.ctrl.Controller.actionDeviner()
 Voici le diagramme de séquence de la méthode de la méthode `actionDeviner()` de la classe `Controller` du package `ctrl` :
 ```mermaid
 sequenceDiagram
-    participant Controller.actionDeviner()
+    participant actionDeviner
     alt nombre IS NOT NOMBRE_INVALIDE
-        Controller.actionDeviner()->>View refView: lireValeurProposee()
-        View refView-->>Controller.actionDeviner(): valeurProposee=
+        actionDeviner->>View refView: lireValeurProposee()
+        View refView-->>actionDeviner: valeurProposee=
         alt ValeurProposee IS NOT NOMBRE_INVALIDE
             alt ValeurProposee < nombre
-               Controller.actionDeviner()->>View refView: afficherStatus("Trop petit !", Color.RED)
+               actionDeviner->>View refView: afficherStatus("Trop petit !", Color.RED)
             else ValeurProposee > nombre
-                Controller.actionDeviner()->>View refView: afficherStatus("Trop grand !", Color.RED)
+                actionDeviner->>View refView: afficherStatus("Trop grand !", Color.RED)
             else
-                Controller.actionDeviner()->>View refView: afficherStatus("Trouvé !!!", Color.GREEN)            
+                actionDeviner->>View refView: afficherStatus("Trouvé !!!", Color.GREEN)            
             end 
         else
-            Controller.actionDeviner()->>View refView: afficherStatus("Entrez un nombre !", Color.YELLOW)
+            actionDeviner->>View refView: afficherStatus("Entrez un nombre !", Color.YELLOW)
         end
 
     end
